@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>地毯復甦所｜洗地毯小遊戲</title>
+<style>
+:root{--ink:#332b3b;--muted:#756b7e;--cream:#fffaf2;--lav:#b9a0e5;--purple:#7654a5;--mint:#b8e2d2;--pink:#f5c6d8;--gold:#f4d48a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0,#f4eaff,transparent 35%),linear-gradient(135deg,#fff8ed,#f4f0ff);font-family:ui-rounded,"Arial",sans-serif;color:var(--ink);min-height:100vh}
+.wrap{max-width:1120px;margin:auto;padding:22px 16px 40px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.brand{display:flex;align-items:center;gap:12px}.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(145deg,#d8c5fa,#a9dccc);display:grid;place-items:center;font-size:30px;box-shadow:0 7px 0 #d9cce9}.eyebrow{font-size:12px;letter-spacing:2px;color:var(--purple);font-weight:800}.title{font-size:clamp(25px,4vw,38px);font-weight:950;letter-spacing:1px;margin:2px 0}.subtitle{color:var(--muted);font-size:14px}.pill{border:1px solid #e8dff1;background:#fff9;border-radius:999px;padding:9px 13px;font-size:13px;font-weight:800}
+.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(260px,.85fr);gap:18px;margin-top:22px}.panel{background:#ffffffd9;border:1px solid #eee3f5;border-radius:24px;padding:17px;box-shadow:0 12px 35px #68518412}.panelhead{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}.panelhead h2{font-size:17px;margin:0}.tag{font-size:12px;background:#f0e9fb;color:#684d91;border-radius:999px;padding:6px 10px;font-weight:800}
+.canvasbox{position:relative;border-radius:18px;overflow:hidden;background:#eadfcf;padding:12px;box-shadow:inset 0 0 0 1px #d7c9b8}.canvasbox canvas{display:block;width:100%;height:auto;aspect-ratio:1.5;touch-action:none;border-radius:12px;cursor:crosshair}
+.tip{display:flex;gap:9px;align-items:flex-start;color:var(--muted);font-size:13px;line-height:1.5;margin:12px 2px 0}.tip span{font-size:20px}
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.tool{border:1px solid #e7ddef;background:#fff;border-radius:15px;padding:11px 7px;min-height:84px;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}.tool:hover{transform:translateY(-2px);border-color:#c3a9e9}.tool.active{background:#eee5ff;border:2px solid var(--purple);box-shadow:0 4px 0 #d4c1f0}.tool .emoji{font-size:25px;display:block;margin-bottom:5px}.tool b{display:block;font-size:13px}.tool small{font-size:10px;color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.stat{background:#faf6ff;border-radius:14px;padding:11px}.stat small{display:block;color:var(--muted);font-size:11px}.stat strong{font-size:20px}.bar{height:8px;background:#ece5f3;border-radius:99px;overflow:hidden;margin-top:8px}.bar div{height:100%;width:0;background:linear-gradient(90deg,#9d7cdb,#85d3b8);border-radius:99px;transition:width .2s}
+.action{width:100%;border:0;border-radius:15px;padding:13px;background:var(--purple);color:white;font-size:15px;font-weight:900;cursor:pointer;box-shadow:0 5px 0 #563a7c;margin-top:8px}.action:active{transform:translateY(3px);box-shadow:0 2px 0 #563a7c}.secondary{background:#fff;color:var(--purple);border:1px solid #d9c9ee;box-shadow:none}.secondary:active{box-shadow:none}.status{min-height:44px;border-radius:13px;background:#f5f0fb;padding:10px 12px;margin-top:12px;font-size:13px;line-height:1.45;color:#604a79}.steps{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}.step{font-size:11px;padding:6px 9px;border-radius:999px;background:#f4f0f8;color:#887a96}.step.done{background:#dff4e9;color:#327a61}.bottom{margin-top:18px;text-align:center;color:#91869b;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:#251b36a6;z-index:4;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.dialog{max-width:430px;width:100%;background:var(--cream);border-radius:25px;padding:25px;text-align:center;box-shadow:0 20px 80px #21162f55}.dialog .big{font-size:52px}.dialog h2{margin:5px 0 8px}.dialog p{color:var(--muted);line-height:1.6}.stars{font-size:30px;letter-spacing:4px;color:#e5ad36}
+@media(max-width:780px){.layout{grid-template-columns:1fr}.wrap{padding:15px 11px 30px}.panel{padding:13px}.tools{grid-template-columns:repeat(3,1fr)}.canvasbox{padding:7px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><div class="logo">🧼</div><div><div class="eyebrow">COZY CARPET STUDIO</div><div class="title">地毯復甦所</div><div class="subtitle">把灰撲撲的日常，洗回亮晶晶的模樣。</div></div></div>
+    <div class="pill">✨ 今日委託　#001</div>
+  </header>
+  <main class="layout">
+    <section class="panel">
+      <div class="panelhead"><h2>🧶 委託地毯：午後花園</h2><span class="tag" id="phaseTag">待清潔</span></div>
+      <div class="canvasbox"><canvas id="rug" width="900" height="600" aria-label="可用工具拖曳清潔的地毯"></canvas></div>
+      <div class="tip"><span>💡</span><div><b>清潔小提示</b><br>選擇工具後，在地毯上按住滑鼠拖曳；手機可以直接用手指塗抹。先吸塵、再噴泡沫、刷洗、沖洗，最後吹乾！</div></div>
+      <div class="steps" id="steps"><span class="step">① 吸塵</span><span class="step">② 噴泡沫</span><span class="step">③ 刷洗</span><span class="step">④ 沖洗</span><span class="step">⑤ 吹乾</span></div>
+    </section>
+    <aside class="panel">
+      <div class="panelhead"><h2>🧰 清潔工具</h2><span class="tag">選一個開始</span></div>
+      <div class="tools">
+        <button class="tool active" data-tool="vacuum"><span class="emoji">🌀</span><b>吸塵器</b><small>吸走灰塵</small></button>
+        <button class="tool" data-tool="soap"><span class="emoji">🫧</span><b>泡沫清潔</b><small>軟化污垢</small></button>
+        <button class="tool" data-tool="brush"><span class="emoji">🪥</span><b>刷洗</b><small>刷起髒污</small></button>
+        <button class="tool" data-tool="rinse"><span class="emoji">💧</span><b>清水沖洗</b><small>吸走髒泡沫</small></button>
+        <button class="tool" data-tool="dry"><span class="emoji">🌬️</span><b>暖風烘乾</b><small>整理毛流</small></button>
+        <button class="tool" data-tool="inspect"><span class="emoji">🔦</span><b>檢查成果</b><small>查看清潔度</small></button>
+      </div>
+      <div class="stats">
+        <div class="stat"><small>清潔進度</small><strong id="percent">0%</strong><div class="bar"><div id="progress"></div></div></div>
+        <div class="stat"><small>委託報酬</small><strong id="coins">🪙 0</strong><div style="font-size:11px;color:#8b7b97;margin-top:7px">完成後領取</div></div>
+      </div>
+      <button class="action" id="finish">交付地毯　✦</button>
+      <button class="action secondary" id="reset">重新開始</button>
+      <div class="status" id="status" role="status">先選擇「吸塵器」，在地毯上來回拖曳吧！</div>
+    </aside>
+  </main>
+  <div class="bottom">地毯復甦所 · 原創清潔小遊戲　♡　進度會暫存在這個瀏覽器</div>
+</div>
+<div class="modal" id="modal"><div class="dialog"><div class="big" id="resultEmoji">🎉</div><h2 id="resultTitle">委託完成！</h2><div class="stars" id="stars">★★★☆☆</div><p id="resultText"></p><button class="action" id="closeModal">再洗一張地毯</button></div></div>
+<script>
+(()=>{
+const canvas=document.getElementById('rug'),ctx=canvas.getContext('2d');
+const W=90,H=60,N=W*H;
+let dirt=new Float32Array(N),foam=new Float32Array(N),wet=new Float32Array(N),dust=new Float32Array(N),done=new Uint8Array(N);
+let tool='vacuum',drawing=false,last=null,coins=Number(localStorage.getItem('carpetCoins')||0),completed=false;
+const status=document.getElementById('status');
+function idx(x,y){return y*W+x}
+function reset(){
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  let edge=Math.min(x,y,W-1-x,H-1-y);
+  let pattern=(Math.sin(x*.42)*Math.cos(y*.36)+Math.sin((x+y)*.19))*.07;
+  dirt[idx(x,y)]=Math.min(1,Math.max(.62,.88+pattern+(Math.random()-.5)*.18));
+  foam[idx(x,y)]=0;wet[idx(x,y)]=0;dust[idx(x,y)]=Math.random()*.7;done[idx(x,y)]=0;
+ }
+ completed=false;setStatus('新委託開始！先用吸塵器清除表面灰塵。');updateUI();draw();
+}
+function rugPattern(x,y){
+ const cx=(x-W/2)/(W/2),cy=(y-H/2)/(H/2),r=Math.sqrt(cx*cx+cy*cy);
+ const border=Math.min(x,y,W-1-x,H-1-y);
+ let base='#b9a3d8';
+ if(border<3)base='#73518f';
+ else if(border<5)base='#e9d4a5';
+ else if(border<7)base='#9e80bf';
+ else if(border<9)base='#e7c9d7';
+ const floral=(Math.sin(x*.28)*Math.cos(y*.34)>.48)||(Math.cos(x*.19+y*.21)>.78);
+ if(floral)base='#d9b1c8';
+ if(r<.62 && (Math.sin(Math.atan2(cy,cx)*8+r*22)>.35))base='#f0d79d';
+ if(r<.25)base='#8fc8b6';
+ return base;
+}
+function draw(){
+ ctx.clearRect(0,0,900,600);
+ // soft drop shadow and woven rug
+ ctx.fillStyle='#c6b4a0';ctx.fillRect(22,22,856,556);
+ ctx.fillStyle='#e9d8c4';ctx.fillRect(12,12,856,556);
+ const cw=856/W,ch=556/H;
+ for(let y=0;y<H;y++)for(let x=0;x<W;x++){
+  const i=idx(x,y),clean=1-dirt[i],base=rugPattern(x,y);
+  ctx.globalAlpha=1;ctx.fillStyle=base;ctx.fillRect(12+x*cw,12+y*ch,cw+.4,ch+.4);
+  // dark dirt veil fades as cleaning actions succeed
+  let grime=Math.max(0,dirt[i])*.86+dust[i]*.18;
+  if(foam[i]>.02){
+   ctx.fillStyle='#fff';ctx.globalAlpha=Math.min(.78,foam[i]*.8);ctx.fillRect(12+x*cw,12+y*ch,cw+.5,ch+.5);
+   ctx.globalAlpha=Math.min(.65,foam[i]*.55);ctx.fillStyle='#b79a86';ctx.fillRect(12+x*cw,12+y*ch,cw+.5,ch*.42);
+  }else if(grime>.03){
+   ctx.fillStyle=`rgba(48,38,32,${Math.min(.92,grime)})`;ctx.fillRect(12+x*cw,12+y*ch,cw+.5,ch+.5);
+  }
+  if(wet[i]>.04){ctx.fillStyle=`rgba(112,183,218,${wet[i]*.3})`;ctx.fillRect(12+x*cw,12+y*ch,cw+.5,ch+.5)}
+ }
+ // decorative fringe
+ ctx.globalAlpha=1;ctx.strokeStyle='#f9edda';ctx.lineWidth=2;
+ for(let x=24;x<858;x+=9){ctx.beginPath();ctx.moveTo(x,8);ctx.lineTo(x-2,12);ctx.moveTo(x,568);ctx.lineTo(x-2,572);ctx.stroke()}
+ ctx.strokeStyle='#f6e8cf';ctx.lineWidth=2;ctx.strokeRect(17,17,846,546);
+ ctx.globalAlpha=1;
+}
+function setStatus(s){status.textContent=s}
+function updateUI(){
+ let total=0,stages=[0,0,0,0,0];
+ for(let i=0;i<N;i++){total+=1-dirt[i];if(dust[i]<.2)stages[0]++;if(foam[i]>.1)stages[1]++;if(dirt[i]<.65)stages[2]++;if(wet[i]<.12&&dirt[i]<.55)stages[3]++;if(done[i])stages[4]++}
+ let p=Math.round(total/N*100);document.getElementById('percent').textContent=p+'%';document.getElementById('progress').style.width=p+'%';document.getElementById('coins').textContent='🪙 '+coins;
+ const names=['吸塵','噴泡沫','刷洗','沖洗','吹乾'];
+ document.querySelectorAll('.step').forEach((el,i)=>el.classList.toggle('done',stages[i]>N*.5));
+ document.getElementById('phaseTag').textContent=completed?'已交付':p>85?'接近完成':p>45?'清潔中':'待清潔';
+}
+function applyAt(px,py){
+ const rect=canvas.getBoundingClientRect();let x=(px-rect.left)/rect.width*W,y=(py-rect.top)/rect.height*H;
+ if(x<0||y<0||x>=W||y>=H)return;
+ const radius=tool==='inspect'?3:4;
+ for(let yy=Math.max(0,Math.floor(y-radius));yy<Math.min(H,Math.ceil(y+radius));yy++)for(let xx=Math.max(0,Math.floor(x-radius));xx<Math.min(W,Math.ceil(x+radius));xx++){
+  let d=Math.hypot(xx-x,yy-y);if(d>radius)continue;let i=idx(xx,yy),power=(1-d/radius)*.12;
+  if(tool==='vacuum'){dust[i]=Math.max(0,dust[i]-power*2.5);dirt[i]=Math.max(.05,dirt[i]-power*.10)}
+  if(tool==='soap'&&dust[i]<.55){foam[i]=Math.min(1,foam[i]+power*3);wet[i]=Math.min(1,wet[i]+power*2)}
+  if(tool==='brush'&&foam[i]>.04){dirt[i]=Math.max(0,dirt[i]-power*.65);foam[i]=Math.max(0,foam[i]-power*.35)}
+  if(tool==='rinse'&&foam[i]>.02){dirt[i]=Math.max(0,dirt[i]-power*.35);foam[i]=Math.max(0,foam[i]-power*2.4);wet[i]=Math.min(1,wet[i]+power*2)}
+  if(tool==='dry'){wet[i]=Math.max(0,wet[i]-power*2.2);if(wet[i]<.25&&dirt[i]<.3)done[i]=1}
+ }
+ draw();updateUI();
+}
+canvas.addEventListener('pointerdown',e=>{if(completed)return;drawing=true;last={x:e.clientX,y:e.clientY};canvas.setPointerCapture(e.pointerId);applyAt(e.clientX,e.clientY)});
+canvas.addEventListener('pointermove',e=>{if(!drawing||completed)return;let dx=e.clientX-last.x,dy=e.clientY-last.y,dist=Math.hypot(dx,dy),steps=Math.max(1,Math.ceil(dist/8));for(let s=1;s<=steps;s++)applyAt(last.x+dx*s/steps,last.y+dy*s/steps);last={x:e.clientX,y:e.clientY}});
+canvas.addEventListener('pointerup',()=>{drawing=false;last=null});canvas.addEventListener('pointercancel',()=>{drawing=false;last=null});
+document.querySelectorAll('.tool').forEach(b=>b.addEventListener('click',()=>{tool=b.dataset.tool;document.querySelectorAll('.tool').forEach(x=>x.classList.toggle('active',x===b));const msgs={vacuum:'吸塵器上工！來回拖曳，把表面灰塵吸走。',soap:'泡沫清潔：在地毯上塗出一層泡泡，再用刷子刷洗。',brush:'刷洗時間！記得先噴泡沫，乾刷效果不好。',rinse:'清水沖洗：把髒泡沫沖掉，才能看見花紋。',dry:'暖風烘乾：把濕氣吹乾，完成最後整理。',inspect:'檢查模式：查看目前地毯的清潔成果。'};setStatus(msgs[tool])}));
+document.getElementById('finish').addEventListener('click',()=>{
+ let sum=0;for(let i=0;i<N;i++)sum+=1-dirt[i];let p=Math.round(sum/N*100);
+ let stars=p>=90?5:p>=75?4:p>=55?3:p>=35?2:1;
+ let reward=stars*25;coins+=reward;localStorage.setItem('carpetCoins',coins);completed=true;updateUI();
+ document.getElementById('resultEmoji').textContent=stars>=4?'✨':'🧼';document.getElementById('resultTitle').textContent=stars>=4?'地毯閃亮復甦！':'委託交付完成！';document.getElementById('stars').textContent='★'.repeat(stars)+'☆'.repeat(5-stars);document.getElementById('resultText').textContent=`清潔完成度 ${p}%。獲得 ${reward} 枚洗衣代幣！${stars>=4?'客人對成果非常滿意！':'再多練習泡沫、刷洗和沖洗的順序，就能拿到更高評價。'}`;document.getElementById('modal').classList.add('show');
+});
+document.getElementById('reset').addEventListener('click',()=>{if(confirm('確定要重新洗這張地毯嗎？本次清潔進度會重置。'))reset()});
+document.getElementById('closeModal').addEventListener('click',()=>{document.getElementById('modal').classList.remove('show');reset()});
+window.addEventListener('keydown',e=>{const keys={'1':'vacuum','2':'soap','3':'brush','4':'rinse','5':'dry','6':'inspect'};if(keys[e.key])document.querySelector(`[data-tool="${keys[e.key]}"]`).click()});
+reset();updateUI();
+})();
+</script>
+</body>
+</html>
